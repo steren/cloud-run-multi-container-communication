@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: multi-container-service
+spec:
+  template:
+    spec:
+      containers:
+      - image: us-central1-docker.pkg.dev/PROJECT_ID/my-repo/ingress
+        name: ingress
+        ports:
+          - containerPort: 8080
+      - image: us-central1-docker.pkg.dev/PROJECT_ID/my-repo/sidecar
+        name: sidecar
+
